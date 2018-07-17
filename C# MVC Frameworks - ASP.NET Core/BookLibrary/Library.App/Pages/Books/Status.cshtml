@@ -1,0 +1,43 @@
+﻿@page
+@model Library.App.Pages.Books.StatusModel
+@{
+    ViewData["Title"] = "Status";
+}
+
+
+<div class="row">
+
+    <img src="@Model.BookInfo.CoverImageUrl" width="450" class="col-md-3" />
+    <div class="col-md-9">
+        <h1>@Model.BookInfo.Title</h1>
+        <br />
+
+    </div>
+</div>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Date Of borrower
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var date in Model.AllDatesOfBorrow)
+        {
+            <tr>
+                <td>
+                    @date.DateOfBorrowed
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<a asp-page="/Index" class="btn btn-info" role="button">Back to home</a>
+

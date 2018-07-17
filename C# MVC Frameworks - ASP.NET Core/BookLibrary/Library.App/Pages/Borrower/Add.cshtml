@@ -1,0 +1,21 @@
+﻿@page
+@model Library.App.Pages.Borrower.AddModel
+@{
+    ViewData["Title"] = "Add";
+}
+
+<h2>Create</h2>
+
+
+<form method="post">
+    <div class="form-group">
+        <label for="title">Name</label>
+        <input asp-for="Name" type="text" class="form-control" id="Namme" aria-describedby="Name" placeholder="Name">
+    </div>
+    <div class="form-group">
+        <label for="address">Address</label>
+        <input asp-for="Address" type="text" class="form-control" id="address" placeholder="Author">
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

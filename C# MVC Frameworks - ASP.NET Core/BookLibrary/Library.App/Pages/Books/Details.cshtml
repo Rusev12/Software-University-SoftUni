@@ -1,0 +1,40 @@
+﻿@page "{id:int?}"
+@model Library.App.Pages.DetailsModel
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+
+<div class="row">
+
+    <img src="@Model.Book.CoverImageUrl" width="450" class="col-md-3" />
+    <div class="col-md-9">
+        <h1>@Model.Book.Title</h1>
+        <br />
+
+        <h5>@Model.Book.Author.Name</h5>
+        <br />
+
+        <h5>@Model.Book.ShortDescription</h5>
+        <br />
+        @if (Model.Book.Status == "At home")
+        {
+            <a asp-page="/Books/Borrow" asp-route-id="@Model.Book.Id" class="btn btn-success" role="button">Borrow this book.</a>
+        }
+        else
+        {
+            <h5>This book is already borrowed.</h5>
+
+        }
+
+    </div>
+</div>
+
+<a asp-page="/Index" class="btn btn-primary" role="button">Back to home</a>
+
+
+<a asp-page="/Books/Status" asp-route-id="@Model.Book.Id" class="btn btn-info" role="button">Check history.</a>
+
+
+

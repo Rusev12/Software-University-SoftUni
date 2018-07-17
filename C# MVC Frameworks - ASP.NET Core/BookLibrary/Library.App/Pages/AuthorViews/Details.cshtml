@@ -1,0 +1,19 @@
+﻿@page
+@model Library.App.Pages.AuthorViews.DetailsModel
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>@Model.Author.Name</h2>
+<ul>
+    @foreach (var book in Model.Author.Books)
+    {
+        <li>
+            <a>@book.Title (@book.Status)</a>
+        </li>
+    }
+</ul>
+
+<a asp-page="/Index" class="btn btn-info" role="button">Back to home</a>
+
+

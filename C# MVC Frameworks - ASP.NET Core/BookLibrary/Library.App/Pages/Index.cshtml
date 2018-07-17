@@ -1,0 +1,45 @@
+﻿@page "{searchString?}"
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<h1>My Library</h1>
+<form method="post">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var book in Model.Books)
+            {
+                <tr>
+                    <td>
+
+                        <a asp-page="./Books/Details" asp-route-id="@book.Id">@book.Title</a>
+                    </td>
+                    <td>
+
+                        <a asp-page="./AuthorViews/Details" asp-route-id="@book.Author.Id"> @book.Author.Name</a>
+
+                    </td>
+                    <td>
+                        @book.Status
+                        @if (book.Status == "Borrowed")
+                        {
+                            <a asp-page="/Index" asp-route-id="@book.Id" asp-page-handler="return" class="btn btn-primary" role="button">Return this book.</a>
+
+                        }
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <a asp-page="./Create">Create</a>
+</form>
